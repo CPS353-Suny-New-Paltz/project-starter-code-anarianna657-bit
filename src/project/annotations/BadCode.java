@@ -1,5 +1,5 @@
 package project.annotations;
 
-public class BadCode {
-
+public class hi {
+	System.out.println("Hello World")
 }
