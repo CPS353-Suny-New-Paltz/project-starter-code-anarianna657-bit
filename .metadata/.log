@@ -1,0 +1,143 @@
+!SESSION 2025-09-18 15:37:10.606 -----------------------------------------------
+eclipse.buildId=4.36.0.20250605-1300
+java.version=21.0.8
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=macosx, ARCH=aarch64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product -keyring /Users/ariadamo/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch aarch64 -product org.eclipse.epp.package.jee.product -keyring /Users/ariadamo/.eclipse_keyring
+
+!ENTRY ch.qos.logback.classic 1 0 2025-09-18 15:37:12.236
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2025-09-18 15:37:33.575
+!MESSAGE Logback config file: /Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.7.100.20250418-1315.xml
+
+!ENTRY org.eclipse.egit.ui 4 0 2025-09-18 15:43:20.371
+!MESSAGE Invalid project description for project 'Cheeseburger' at 'file:/Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit' 
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Invalid project description for project 'Cheeseburger' at 'file:/Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit' 
+	at org.eclipse.core.internal.resources.Project.checkDescription(Project.java:211)
+	at org.eclipse.core.internal.resources.Project.assertCreateRequirements(Project.java:95)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:305)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:291)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils.createExistingProject(ProjectUtils.java:179)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils$1.run(ProjectUtils.java:104)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2457)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2477)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils.createProjects(ProjectUtils.java:138)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils.createProjects(ProjectUtils.java:62)
+	at org.eclipse.egit.ui.internal.clone.GitImportWizard.importProjects(GitImportWizard.java:254)
+	at org.eclipse.egit.ui.internal.clone.GitImportWizard$4.run(GitImportWizard.java:206)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:123)
+Contains: OK
+Contains: /Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit overlaps the workspace location: /Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2025-09-18 15:43:20.372
+!MESSAGE Invalid project description for project 'Cheeseburger' at 'file:/Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit' 
+!SUBENTRY 2 unknown 0 0 2025-09-18 15:43:20.372
+!MESSAGE OK
+!SUBENTRY 2 org.eclipse.core.resources 4 77 2025-09-18 15:43:20.372
+!MESSAGE /Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit overlaps the workspace location: /Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit
+
+!ENTRY org.eclipse.egit.ui 4 0 2025-09-18 15:43:27.772
+!MESSAGE Invalid project description for project 'Cheeseburger' at 'file:/Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit' 
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Invalid project description for project 'Cheeseburger' at 'file:/Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit' 
+	at org.eclipse.core.internal.resources.Project.checkDescription(Project.java:211)
+	at org.eclipse.core.internal.resources.Project.assertCreateRequirements(Project.java:95)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:305)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:291)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils.createExistingProject(ProjectUtils.java:179)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils$1.run(ProjectUtils.java:104)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2457)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2477)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils.createProjects(ProjectUtils.java:138)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils.createProjects(ProjectUtils.java:62)
+	at org.eclipse.egit.ui.internal.clone.GitImportWizard.importProjects(GitImportWizard.java:254)
+	at org.eclipse.egit.ui.internal.clone.GitImportWizard$4.run(GitImportWizard.java:206)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:123)
+Contains: OK
+Contains: /Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit overlaps the workspace location: /Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2025-09-18 15:43:27.772
+!MESSAGE Invalid project description for project 'Cheeseburger' at 'file:/Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit' 
+!SUBENTRY 2 unknown 0 0 2025-09-18 15:43:27.772
+!MESSAGE OK
+!SUBENTRY 2 org.eclipse.core.resources 4 77 2025-09-18 15:43:27.772
+!MESSAGE /Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit overlaps the workspace location: /Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit
+
+!ENTRY org.eclipse.egit.ui 4 0 2025-09-18 15:43:41.232
+!MESSAGE Invalid project description for project 'Cheeseburger' at 'file:/Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit' 
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Invalid project description for project 'Cheeseburger' at 'file:/Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit' 
+	at org.eclipse.core.internal.resources.Project.checkDescription(Project.java:211)
+	at org.eclipse.core.internal.resources.Project.assertCreateRequirements(Project.java:95)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:305)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:291)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils.createExistingProject(ProjectUtils.java:179)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils$1.run(ProjectUtils.java:104)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2457)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2477)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils.createProjects(ProjectUtils.java:138)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils.createProjects(ProjectUtils.java:62)
+	at org.eclipse.egit.ui.internal.clone.GitImportWizard.importProjects(GitImportWizard.java:254)
+	at org.eclipse.egit.ui.internal.clone.GitImportWizard$4.run(GitImportWizard.java:206)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:123)
+Contains: OK
+Contains: /Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit overlaps the workspace location: /Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2025-09-18 15:43:41.232
+!MESSAGE Invalid project description for project 'Cheeseburger' at 'file:/Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit' 
+!SUBENTRY 2 unknown 0 0 2025-09-18 15:43:41.232
+!MESSAGE OK
+!SUBENTRY 2 org.eclipse.core.resources 4 77 2025-09-18 15:43:41.232
+!MESSAGE /Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit overlaps the workspace location: /Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit
+
+!ENTRY org.eclipse.egit.ui 4 0 2025-09-18 15:50:05.310
+!MESSAGE Invalid project description for project 'Cheeseburger' at 'file:/Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit' 
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Invalid project description for project 'Cheeseburger' at 'file:/Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit' 
+	at org.eclipse.core.internal.resources.Project.checkDescription(Project.java:211)
+	at org.eclipse.core.internal.resources.Project.assertCreateRequirements(Project.java:95)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:305)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:291)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils.createExistingProject(ProjectUtils.java:179)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils$1.run(ProjectUtils.java:104)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2457)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2477)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils.createProjects(ProjectUtils.java:138)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils.createProjects(ProjectUtils.java:62)
+	at org.eclipse.egit.ui.internal.clone.GitImportWizard.importProjects(GitImportWizard.java:254)
+	at org.eclipse.egit.ui.internal.clone.GitImportWizard$4.run(GitImportWizard.java:206)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:123)
+Contains: OK
+Contains: /Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit overlaps the workspace location: /Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2025-09-18 15:50:05.310
+!MESSAGE Invalid project description for project 'Cheeseburger' at 'file:/Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit' 
+!SUBENTRY 2 unknown 0 0 2025-09-18 15:50:05.310
+!MESSAGE OK
+!SUBENTRY 2 org.eclipse.core.resources 4 77 2025-09-18 15:50:05.310
+!MESSAGE /Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit overlaps the workspace location: /Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit
+
+!ENTRY org.eclipse.egit.ui 4 0 2025-09-18 15:51:00.526
+!MESSAGE Invalid project description for project 'Cheeseburger' at 'file:/Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit' 
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Invalid project description for project 'Cheeseburger' at 'file:/Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit' 
+	at org.eclipse.core.internal.resources.Project.checkDescription(Project.java:211)
+	at org.eclipse.core.internal.resources.Project.assertCreateRequirements(Project.java:95)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:305)
+	at org.eclipse.core.internal.resources.Project.create(Project.java:291)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils.createExistingProject(ProjectUtils.java:179)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils$1.run(ProjectUtils.java:104)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2457)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2477)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils.createProjects(ProjectUtils.java:138)
+	at org.eclipse.egit.ui.internal.clone.ProjectUtils.createProjects(ProjectUtils.java:62)
+	at org.eclipse.egit.ui.internal.clone.GitImportWizard.importProjects(GitImportWizard.java:254)
+	at org.eclipse.egit.ui.internal.clone.GitImportWizard$4.run(GitImportWizard.java:206)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:123)
+Contains: OK
+Contains: /Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit overlaps the workspace location: /Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2025-09-18 15:51:00.526
+!MESSAGE Invalid project description for project 'Cheeseburger' at 'file:/Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit' 
+!SUBENTRY 2 unknown 0 0 2025-09-18 15:51:00.526
+!MESSAGE OK
+!SUBENTRY 2 org.eclipse.core.resources 4 77 2025-09-18 15:51:00.526
+!MESSAGE /Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit overlaps the workspace location: /Users/ariadamo/Documents/GitHub/project-starter-code-anarianna657-bit
