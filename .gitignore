@@ -9,3 +9,4 @@ build
 bin
 *.class
 .DS_Store
+/.metadata/
