@@ -1,5 +1,4 @@
 package api2;
-
 import project.annotations.ConceptualAPI;
 
 @ConceptualAPI
