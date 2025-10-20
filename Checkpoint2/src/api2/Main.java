@@ -2,9 +2,9 @@ package api2;
 
 public class Main {
     public static void main(String[] args) {
-        StorageAPI storage = new StorageAPI(){
+        StorageAPI storage = new StorageAPI() {
             @Override 
-            public void readInput(String source){
+            public void readInput(String source) {
                 System.out.println("readInput: " + source);
             }
             @Override 
