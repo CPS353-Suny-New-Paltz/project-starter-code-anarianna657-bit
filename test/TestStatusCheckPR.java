@@ -77,7 +77,8 @@ public class TestStatusCheckPR {
                     return true;
                 }
             }
-        } catch (Exception e) {
+        } 
+        catch (Exception e) {
             System.out.println("Warning: reviewer approval check failed - " + e.getMessage());
         }
         return false;
@@ -152,8 +153,8 @@ public class TestStatusCheckPR {
             String getStatusChecks = baseApiPath + "commits/" + sha + "/check-runs";
             String statusCheckResult = curl(getStatusChecks);
 
-            for (JsonElement check : JsonParser.parseString(statusCheckResult)
-                    .getAsJsonObject().get("check_runs").getAsJsonArray().asList()) {
+            for (JsonElement check : JsonParser.parseString(statusCheckResult) {
+                 .getAsJsonObject().get("check_runs").getAsJsonArray().asList()) {
                 String name = check.getAsJsonObject().get("name").getAsString();
                 String status = check.getAsJsonObject().get("status").getAsString();
                 if (status.equals(COMPLETED)) {
