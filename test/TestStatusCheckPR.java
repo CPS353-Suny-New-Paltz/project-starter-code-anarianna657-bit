@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URI;
@@ -43,7 +42,6 @@ public class TestStatusCheckPR {
                 break;
             }
         }
-    
     }
     
     // query the git remote to find the repo URL
@@ -59,7 +57,6 @@ public class TestStatusCheckPR {
         ownerRepo = ownerRepo.substring(0, removeTrailingGit);
         
         return "https://api.github.com/repos/" + ownerRepo + "/";
-                
     }
 
     private boolean hasReviewerApproval(String baseApiPath, String prNumber) throws Exception {
@@ -119,7 +116,7 @@ public class TestStatusCheckPR {
     private void sortCommits(List<JsonElement> commits) {
         Collections.sort(commits, (c1, c2) -> {
             try {
-                return -1*getCommitDate(c1).compareTo(getCommitDate(c2));
+                return -1 * getCommitDate(c1).compareTo(getCommitDate(c2));
             } catch (ParseException e) {
                 throw new RuntimeException(e);
             }
@@ -128,7 +125,11 @@ public class TestStatusCheckPR {
 
     // parse commit date from the json
     private Date getCommitDate(JsonElement c1) throws ParseException {
-        return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").parse(c1.getAsJsonObject().get("commit").getAsJsonObject().get("committer").getAsJsonObject().get("date").getAsString());
+        return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+            .parse(c1.getAsJsonObject()
+                     .get("commit").getAsJsonObject()
+                     .get("committer").getAsJsonObject()
+                     .get("date").getAsString());
     }
 
     // parse check names and results from the json
@@ -138,7 +139,10 @@ public class TestStatusCheckPR {
         String statusCheckResult = curl(getStatusChecks);
         Map<String, String> checkToStatus = new HashMap<>();
 
-        for (JsonElement check : JsonParser.parseString(statusCheckResult).getAsJsonObject().get("check_runs").getAsJsonArray().asList()) {
+        for (JsonElement check : JsonParser.parseString(statusCheckResult)
+                                           .getAsJsonObject()
+                                           .get("check_runs")
+                                           .getAsJsonArray().asList()) {
             String name = check.getAsJsonObject().get("name").getAsString();
             String status =  check.getAsJsonObject().get("status").getAsString();
             if (status.equals(COMPLETED)) {
@@ -154,7 +158,8 @@ public class TestStatusCheckPR {
         URL url = new URI(toCurl).toURL();
 
         String result = "";
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"))) {
+        try (BufferedReader reader = new BufferedReader(
+                new InputStreamReader(url.openStream(), "UTF-8"))) {
             String line; 
             while ((line = reader.readLine()) != null) {
                 result += line + "\n";
