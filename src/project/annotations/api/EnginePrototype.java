@@ -1,4 +1,4 @@
-package api2;
+package project.annotations.api;
 
 public class EnginePrototype {
     public void prototype(EngineAPI computeapi) {

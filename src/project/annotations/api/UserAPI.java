@@ -1,4 +1,4 @@
-package api2;
+package project.annotations.api;
 import project.annotations.NetworkAPI;
 
 @NetworkAPI

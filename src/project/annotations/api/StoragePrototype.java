@@ -1,4 +1,4 @@
-package api2;
+package project.annotations.api;
 
 public class StoragePrototype {
     public void prototype(StorageAPI storageapi) {
