@@ -77,7 +77,7 @@ public class TestStatusCheckPR {
         String getReviews = baseApiPath + "pulls/" + prNumber + "/reviews";
         String reviewResult = curl(getReviews);
 
-        if (reviewResult.isEmpty() || reviewResult.equals("{}")) return false;
+        if (reviewResult.isEmpty() || reviewResult.equals("{}")){ return false;}
 
         JsonArray reviews = JsonParser.parseString(reviewResult).getAsJsonArray();
         for (JsonElement review : reviews) {
@@ -92,7 +92,7 @@ public class TestStatusCheckPR {
         String getCommits = baseApiPath + "pulls/" + prNumber + "/commits";
         String commitResult = curl(getCommits);
 
-        if (commitResult.isEmpty() || commitResult.equals("{}")) return false;
+        if (commitResult.isEmpty() || commitResult.equals("{}")){ return false;}
 
         JsonArray commitsArray = JsonParser.parseString(commitResult).getAsJsonArray();
         List<JsonElement> commits = new ArrayList<>();
@@ -154,7 +154,7 @@ public class TestStatusCheckPR {
         String statusCheckResult = curl(getStatusChecks);
         Map<String, String> checkToStatus = new HashMap<>();
 
-        if (statusCheckResult.isEmpty() || statusCheckResult.equals("{}")) return checkToStatus;
+        if (statusCheckResult.isEmpty() || statusCheckResult.equals("{}")){ return checkToStatus;}
 
         JsonArray checks = JsonParser.parseString(statusCheckResult)
             .getAsJsonObject().get("check_runs").getAsJsonArray();
