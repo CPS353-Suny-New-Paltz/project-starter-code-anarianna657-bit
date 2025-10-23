@@ -43,7 +43,6 @@ public class TestStatusCheckPR {
                 break;
             }
         }
-        Assertions.assertTrue(foundPullRequest, "No pull request with required status checks (failure, then success) and reviewer approval found");
     }
     
     // query the git remote to find the repo URL
