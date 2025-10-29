@@ -1,15 +1,13 @@
 package project;
-
 import project.annotations.StorageAPI;
 
-@StorageAPI
-public class StorageAPIImpl {
+public abstract class StorageAPIImpl implements StorageAPI {
 
-    public boolean saveData(String data) {
-        return false; // placeholder return
+    public StorageAPIImpl() {
+        // no setup yet
     }
 
-    public String retrieveData() {
-        return ""; // placeholder return
+    public boolean saveData(String data) {
+        return false;
     }
 }
