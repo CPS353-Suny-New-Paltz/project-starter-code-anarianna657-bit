@@ -1,23 +1,33 @@
 package integrationtests;
-import java.util.List;
 import project.annotations.StorageAPI;
 
-//Reads integers from InMemoryInput and writes results to InMemoryOutput. 
-public abstract class InMemoryStorageAPI implements StorageAPI {
+//Reads and writes data from simple in memory fields.
+public class InMemoryStorageAPI implements StorageAPI {
 
-    private final InMemoryInput input;
-    private final InMemoryOutput output;
+    private String inputData;
+    private String outputData;
 
-    public InMemoryStorageAPI(InMemoryInput input, InMemoryOutput output) {
-        this.input = input;
-        this.output = output;
+    public InMemoryStorageAPI() {
+        this.inputData = "";
+        this.outputData = "";
     }
 
-    public List<Integer> readInput() {
-        return input.getInputNumbers();
+    @Override
+    public void readInput(String source) {
+        this.inputData = source;
     }
 
-    public void writeOutput(String data) {
-        output.write(data);
+    @Override
+    public void writeOutput(String destination) {
+        this.outputData = destination;
+    }
+
+    //Test helper methods
+    public String getInputData() {
+        return inputData;
+    }
+
+    public String getOutputData() {
+        return outputData;
     }
 }
