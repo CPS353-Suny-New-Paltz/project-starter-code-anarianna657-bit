@@ -1,9 +1,10 @@
 package integrationtests;
 import org.junit.jupiter.api.Test;
-import project.EngineAPIImpl;
-import project.StorageAPIImpl;
-import project.UserAPIImpl;
-import static org.junit.jupiter.api.Assertions.*;
+//import project.EngineAPIImpl;
+//import project.StorageAPIImpl;
+//import project.UserAPIImpl;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 //This version passes temporarily until compute logic is implemented.
 public class ComputeEngineIntegrationTest {
