@@ -1,4 +1,6 @@
 package project;
+import java.util.List;
+
 import project.annotations.EngineAPI;
 import project.annotations.StorageAPI;
 import project.annotations.UserAPI;
@@ -41,4 +43,16 @@ public class UserAPIImpl implements UserAPI {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public String calculatePrimes(int limit) {
+	    project.checkpoint4.ComputationComponent computation = new project.checkpoint4.ComputationComponent();
+	    List<Integer> primes = computation.compute(limit);
+
+	    if (primes.isEmpty()) {
+	        return "";
+	    }
+
+	    return primes.toString().replace("[", "").replace("]", "").trim();
+	}
+
 }
