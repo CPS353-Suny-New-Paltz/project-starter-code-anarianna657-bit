@@ -10,7 +10,7 @@ public class ComputationComponent {
         List<Integer> primes = new ArrayList<>();
 
         if (limit <= 2) {
-            return primes; 
+        	return new ArrayList<>();
         }
 
         for (int i = 2; i < limit; i++) {
