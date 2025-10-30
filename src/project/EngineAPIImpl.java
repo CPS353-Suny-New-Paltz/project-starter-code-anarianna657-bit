@@ -31,7 +31,8 @@ public class EngineAPIImpl implements EngineAPI {
 	            builder.append(", ");
 	        }
 	    }
-	    return builder.toString();
+
+	    return builder.toString().trim();
 	}
 
 
