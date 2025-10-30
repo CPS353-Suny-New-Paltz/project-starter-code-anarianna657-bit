@@ -33,6 +33,18 @@ public class EngineAPIImpl implements EngineAPI {
                 builder.append(", ");
             }
         }
-        return builder.toString().trim();
+
+        String result = builder.toString()
+                .replace("[", "")
+                .replace("]", "")
+                .replaceAll("\\s+", " ") 
+                .trim();
+
+        if (result.equals(" ")) {
+            return "";
+        }
+
+        return result;
     }
+
 }
