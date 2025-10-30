@@ -1,7 +1,7 @@
 package project;
 import project.annotations.EngineAPI; 
 
-public abstract class EngineAPIImpl implements EngineAPI {
+public class EngineAPIImpl implements EngineAPI {
 
     public EngineAPIImpl() {
         // no setup yet
@@ -10,4 +10,10 @@ public abstract class EngineAPIImpl implements EngineAPI {
     public String calculatePrimes(int input) {
         return "";
     }
+
+	@Override
+	public String compute(int n) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
