@@ -4,7 +4,7 @@ import java.util.List;
 import project.annotations.ConceptualAPI;
 
 @ConceptualAPI
-public abstract class ComputationComponent {
+public class ComputationComponent {
 
     public List<Integer> compute(int limit) {
         List<Integer> primes = new ArrayList<>();
