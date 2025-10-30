@@ -16,6 +16,7 @@ import project.annotations.ProcessAPI;
 import spoon.Launcher;
 import spoon.reflect.declaration.CtType;
 import spoon.reflect.reference.CtExecutableReference;
+import spoon.reflect.visitor.Filter;
 /**
  * Important note if you're experiencing test failures:
  * An entirely annotation-based injection framework for the tests is NOT allowed for checkpoint 3. 
