@@ -1,18 +1,20 @@
 package project;
-import java.util.List;
-
 import project.annotations.EngineAPI;
 import project.annotations.StorageAPI;
 import project.annotations.UserAPI;
 
 public class UserAPIImpl implements UserAPI {
 
-	  private final EngineAPI engine;
-	  private final StorageAPI storage;
+	    private final EngineAPI engine;
+	    private final StorageAPI storage;
 
 	    public UserAPIImpl(EngineAPI engine, StorageAPI storage) {
 	        this.engine = engine;
 	        this.storage = storage;
+	    }
+	    
+	    public String findPrimes(int limit) {
+	        return engine.calculatePrimes(limit);
 	    }
 
 		@Override
