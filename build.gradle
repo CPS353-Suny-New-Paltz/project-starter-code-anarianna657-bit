@@ -29,9 +29,7 @@ dependencies {
 
 test {
     useJUnitPlatform()
-    
-    //Filter out tests that aren’t supposed to pass yet
-    filter {
-        excludeTestsMatching "project.checkpointtests.Checkpoint3TestSuite"
+	filter {
+        excludeTestsMatching "project.checkpointtests.Checkpoint3TestSuite.checkIntegrationTestStructure"
     }
 }
