@@ -1,14 +1,10 @@
 package project;
 import java.util.List;
-
-import project.annotations.EngineAPI; 
+import project.annotations.EngineAPI;
+import project.checkpoint4.ComputationComponent;
 
 public class EngineAPIImpl implements EngineAPI {
 
-    public EngineAPIImpl() {
-        // no setup yet
-    }
-    
     @Override
     public String compute(int n) {
         if (n <= 2) {
@@ -19,13 +15,11 @@ public class EngineAPIImpl implements EngineAPI {
 
     @Override
     public String calculatePrimes(int limit) {
-        project.checkpoint4.ComputationComponent computation = new project.checkpoint4.ComputationComponent();
+        ComputationComponent computation = new ComputationComponent();
         List<Integer> primes = computation.compute(limit);
-
         if (primes == null || primes.isEmpty()) {
             return "";
         }
-
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < primes.size(); i++) {
             builder.append(primes.get(i));
@@ -33,18 +27,6 @@ public class EngineAPIImpl implements EngineAPI {
                 builder.append(", ");
             }
         }
-
-        String result = builder.toString()
-                .replace("[", "")
-                .replace("]", "")
-                .replaceAll("\\s+", " ") 
-                .trim();
-
-        if (result.equals(" ")) {
-            return "";
-        }
-
-        return result;
+        return builder.toString().trim();
     }
-
 }

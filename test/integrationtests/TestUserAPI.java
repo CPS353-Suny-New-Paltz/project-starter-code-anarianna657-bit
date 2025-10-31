@@ -1,14 +1,9 @@
 package integrationtests;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.any;
-import static org.mockito.Mockito.times;
 import org.junit.jupiter.api.Test;
 import project.UserAPIImpl;
-import project.StorageAPIImpl;
 import project.EngineAPIImpl;
-import project.annotations.UserAPI;
 import project.annotations.EngineAPI;
 import project.annotations.StorageAPI;
 
