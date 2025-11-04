@@ -12,9 +12,9 @@ public class TestEngineAPI {
     }
 
     @Test
-    public void testCalculatePrimesReturnsEmptyString() {
+    public void testCalculatePrimesHandlesNegativeInput() {
         EngineAPIImpl engineApi = new EngineAPIImpl();
-        String result = engineApi.calculatePrimes(10);
-        assert result.isEmpty() : "calculatePrimes should return empty string until implemented";
+        String result = engineApi.calculatePrimes(-5);
+        assert result != null : "calculatePrimes should not return null for negative input";
     }
 }
