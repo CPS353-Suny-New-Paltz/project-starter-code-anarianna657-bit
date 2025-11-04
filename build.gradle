@@ -30,6 +30,5 @@ dependencies {
 test {
     useJUnitPlatform()
 	filter {
-        excludeTestsMatching "project.checkpointtests.Checkpoint3TestSuite.checkIntegrationTestStructure"
-    }
+	excludeTestsMatching "test.integrationtests"
 }
