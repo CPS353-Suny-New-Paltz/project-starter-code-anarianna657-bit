@@ -31,4 +31,5 @@ test {
     useJUnitPlatform()
 	filter {
 	excludeTestsMatching "test.integrationtests"
+	}
 }
