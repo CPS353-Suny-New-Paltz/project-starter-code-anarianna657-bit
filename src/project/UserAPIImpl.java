@@ -17,6 +17,7 @@ public class UserAPIImpl implements UserAPI {
 	        return engine.calculatePrimes(limit);
 	    }
 
+<<<<<<< Updated upstream
 		@Override
 		public void setInput(String sourceUri) {
 			// TODO Auto-generated method stub
@@ -45,4 +46,15 @@ public class UserAPIImpl implements UserAPI {
 			// TODO Auto-generated method stub
 			return null;
 		}
+=======
+    // Example empty method, return default values
+    public String findPrimes(int input) {
+        return "";
+    }
+
+	public void displayComputationSummary() {
+		// TODO Auto-generated method stub
+		
+	}
+>>>>>>> Stashed changes
 }
