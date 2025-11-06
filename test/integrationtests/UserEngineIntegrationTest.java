@@ -3,7 +3,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import project.EngineAPIImpl;
-import project.StorageAPIImpl;
 import project.UserAPIImpl;
 
 public class UserEngineIntegrationTest {
@@ -11,8 +10,8 @@ public class UserEngineIntegrationTest {
     @Test
     public void testUserAndEngineInteraction() {
         EngineAPIImpl engineApi = new EngineAPIImpl();
-        StorageAPIImpl storageApi = new StorageAPIImpl();
-        UserAPIImpl userApi = new UserAPIImpl(engineApi, storageApi);
+        InMemoryStorageAPI storageApi = new InMemoryStorageAPI();
+        UserAPIImpl userApi  = new UserAPIImpl(engineApi, storageApi);
 
         String output = engineApi.calculatePrimes(10);
         assertNotNull(output);
@@ -22,7 +21,7 @@ public class UserEngineIntegrationTest {
     @Test
     public void testEngineComputeIntegration() {
         EngineAPIImpl engineApi = new EngineAPIImpl();
-        StorageAPIImpl storageApi = new StorageAPIImpl();
+        InMemoryStorageAPI storageApi = new InMemoryStorageAPI();
         UserAPIImpl userApi = new UserAPIImpl(engineApi, storageApi);
 
         String result = engineApi.compute(5);
