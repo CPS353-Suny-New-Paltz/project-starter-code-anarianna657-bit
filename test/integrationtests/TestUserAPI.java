@@ -36,6 +36,7 @@ public class TestUserAPI {
         assert result != null : "findPrimes should return a result (even if empty for now)";
     }
     
+    //additional test added
     @Test
     public void testCalculatePrimesWithZeroOrNegative() {
         EngineAPIImpl engineApi = new EngineAPIImpl();
