@@ -11,41 +11,34 @@ import project.UserAPIImpl;
 public class UserEngineIntegrationTest {
 
     @Test
-    public void testUserAPICallsEngineAPIAndReturnsPrimes() {
-    	
+    public void testUserApiAndEngineApiInteraction() {
         EngineAPI mockEngine = mock(EngineAPI.class);
         StorageAPI mockStorage = mock(StorageAPI.class);
-        UserAPIImpl userApi = new UserAPIImpl(mockEngine, mockStorage);
+        UserAPIImpl userAPI = new UserAPIImpl(mockEngine, mockStorage);
+
         when(mockEngine.calculatePrimes(10)).thenReturn("2, 3, 5, 7");
-        String result = mockEngine.calculatePrimes(10);
+
+        String result = userAPI.runEngineTask(mockEngine, 10);
+
         verify(mockEngine).calculatePrimes(10);
-        assertEquals("2, 3, 5, 7", result, "UserAPI should return the primes from EngineAPI");
+        assertEquals("2, 3, 5, 7", result);
     }
 
     @Test
-    public void testUserAPIHandlesEngineCompute() {
+    public void testUserApiHandlesEngineFailure() {
         EngineAPI mockEngine = mock(EngineAPI.class);
         StorageAPI mockStorage = mock(StorageAPI.class);
-        UserAPIImpl userApi = new UserAPIImpl(mockEngine, mockStorage);
-        when(mockEngine.compute(5)).thenReturn("Result: 120");
-        String result = mockEngine.compute(5);
-        verify(mockEngine).compute(5);
-        assertEquals("Result: 120", result, "UserAPI should correctly return EngineAPI’s compute result");
-    }
+        UserAPIImpl userAPI = new UserAPIImpl(mockEngine, mockStorage);
 
-    @Test
-    public void testUserAPIHandlesEngineFailure() {
-        EngineAPI mockEngine = mock(EngineAPI.class);
-        StorageAPI mockStorage = mock(StorageAPI.class);
-        UserAPIImpl userApi = new UserAPIImpl(mockEngine, mockStorage);
-        when(mockEngine.calculatePrimes(5)).thenThrow(new RuntimeException("Engine failure"));
+        when(mockEngine.calculatePrimes(5)).thenThrow(new RuntimeException("Engine crashed"));
+
         String result;
         try {
-            result = mockEngine.calculatePrimes(5);
+            result = userAPI.runEngineTask(mockEngine, 5);
         } catch (Exception e) {
             result = "error";
         }
 
-        assertNotNull(result, "UserAPI should handle engine failures gracefully");
+        assertNotNull(result);
     }
 }

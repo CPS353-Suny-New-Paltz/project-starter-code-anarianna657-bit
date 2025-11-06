@@ -40,4 +40,9 @@ public class UserAPIImpl implements UserAPI {
 			// TODO Auto-generated method stub
 			
 		}
+
+		public String runEngineTask(EngineAPI mockEngine, int i) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }
