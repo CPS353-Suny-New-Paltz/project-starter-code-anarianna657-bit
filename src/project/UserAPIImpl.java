@@ -56,5 +56,8 @@ public class UserAPIImpl implements UserAPI {
 		// TODO Auto-generated method stub
 		
 	}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
