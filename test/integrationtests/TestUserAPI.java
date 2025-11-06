@@ -1,4 +1,5 @@
 package integrationtests;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import org.junit.jupiter.api.Test;
@@ -33,5 +34,15 @@ public class TestUserAPI {
 
         String result = userApi.findPrimes(10);
         assert result != null : "findPrimes should return a result (even if empty for now)";
+    }
+    
+    //additional test added
+    @Test
+    public void testCalculatePrimesWithZeroOrNegative() {
+        EngineAPIImpl engineApi = new EngineAPIImpl();
+        String resultZero = engineApi.calculatePrimes(0);
+        String resultNegative = engineApi.calculatePrimes(-5);
+        assertTrue(resultZero.isEmpty() && resultNegative.isEmpty(),
+                "calculatePrimes should return an empty result for zero or negative inputs");
     }
 }
