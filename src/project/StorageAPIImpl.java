@@ -13,6 +13,7 @@ public class StorageAPIImpl implements StorageAPI {
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	@Override
 	public void readInput(String source) {
 		// TODO Auto-generated method stub
@@ -21,6 +22,9 @@ public class StorageAPIImpl implements StorageAPI {
 
 	@Override
 	public void writeOutput(String destination) {
+=======
+	public void saveData(String output, String result) {
+>>>>>>> Stashed changes
 =======
 	public void saveData(String output, String result) {
 >>>>>>> Stashed changes

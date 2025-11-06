@@ -57,6 +57,9 @@ public class UserAPIImpl implements UserAPI {
 		
 	}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
