@@ -13,7 +13,7 @@ public class UserAPIImpl implements UserAPI {
 	        this.storage = storage;
 	    }
 	    
-	    public String findPrimes(int limit) {
+	    public String findPrimes1(int limit) {
 	        return engine.calculatePrimes(limit);
 	    }
 
@@ -45,4 +45,14 @@ public class UserAPIImpl implements UserAPI {
 			// TODO Auto-generated method stub
 			return null;
 		}
+
+    // Example empty method, return default values
+    public String findPrimes(int input) {
+        return "";
+    }
+
+	public void displayComputationSummary() {
+		// TODO Auto-generated method stub
+		
+	}
 }

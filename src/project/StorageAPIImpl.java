@@ -19,6 +19,10 @@ public class StorageAPIImpl implements StorageAPI {
 
 	@Override
 	public void writeOutput(String destination) {
+		
+	}
+	
+	public void saveData(String output, String result) {
 		// TODO Auto-generated method stub
 		
 	}
