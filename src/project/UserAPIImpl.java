@@ -13,11 +13,10 @@ public class UserAPIImpl implements UserAPI {
 	        this.storage = storage;
 	    }
 	    
-	    public String findPrimes(int limit) {
+	    public String findPrimes1(int limit) {
 	        return engine.calculatePrimes(limit);
 	    }
 
-<<<<<<< Updated upstream
 		@Override
 		public void setInput(String sourceUri) {
 			// TODO Auto-generated method stub
@@ -46,7 +45,7 @@ public class UserAPIImpl implements UserAPI {
 			// TODO Auto-generated method stub
 			return null;
 		}
-=======
+
     // Example empty method, return default values
     public String findPrimes(int input) {
         return "";
@@ -56,11 +55,4 @@ public class UserAPIImpl implements UserAPI {
 		// TODO Auto-generated method stub
 		
 	}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
