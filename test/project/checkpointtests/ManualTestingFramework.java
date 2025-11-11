@@ -36,9 +36,10 @@ public class ManualTestingFramework {
     	        }
 
     	        @Override
-    	        public void displayComputationSummary() {
-    	            System.out.println("Manual test complete.");
+    	        public String displayComputationSummary() {
+    	            return "Computation summary displayed.";
     	        }
+
     	    };
 
     	    System.out.println("Running manual test...");
