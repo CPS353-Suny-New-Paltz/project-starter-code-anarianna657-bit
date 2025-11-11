@@ -1,58 +1,60 @@
 package project;
+
 import project.annotations.EngineAPI;
 import project.annotations.StorageAPI;
 import project.annotations.UserAPI;
 
 public class UserAPIImpl implements UserAPI {
 
-	    private final EngineAPI engine;
-	    private final StorageAPI storage;
+    private final EngineAPI engine;
+    private final StorageAPI storage;
+    private String inputSource;
+    private String outputDestination;
 
-	    public UserAPIImpl(EngineAPI engine, StorageAPI storage) {
-	        this.engine = engine;
-	        this.storage = storage;
-	    }
-	    
-	    public String findPrimes1(int limit) {
-	        return engine.calculatePrimes(limit);
-	    }
-
-		@Override
-		public void setInput(String sourceUri) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void setOutput(String sinkUri) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void setDelimiters(String pairDelimiter, String kvDelimiter) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void useDefaultDelimiters() {
-			// TODO Auto-generated method stub
-			
-		}
-
-		public String runEngineTask(EngineAPI mockEngine, int i) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-
-    // Example empty method, return default values
-    public String findPrimes(int input) {
-        return "";
+    public UserAPIImpl(EngineAPI engine, StorageAPI storage) {
+        this.engine = engine;
+        this.storage = storage;
     }
 
-	public void displayComputationSummary() {
-		// TODO Auto-generated method stub
-		
-	}
+    public String findPrimes1(int limit) {
+        return engine.calculatePrimes(limit);
+    }
+
+    @Override
+    public void setInput(String sourceUri) {
+        this.inputSource = sourceUri;
+    }
+
+    @Override
+    public void setOutput(String sinkUri) {
+        this.outputDestination = sinkUri;
+    }
+
+    @Override
+    public void setDelimiters(String pairDelimiter, String kvDelimiter) {
+    }
+
+    @Override
+    public void useDefaultDelimiters() {
+    }
+
+    @Override
+    public String run() {
+        String input = storage.readInput(inputSource);
+        String result = engine.compute(42);
+        return storage.writeOutput(result);
+    }
+
+    public String runEngineTask(EngineAPI mockEngine, int i) {
+        return mockEngine.compute(i);
+    }
+
+    public String findPrimes(int input) {
+        return engine.calculatePrimes(input);
+    }
+
+    public String displayComputationSummary() {
+        return "Computation complete for " + inputSource + " → " + outputDestination;
+    }
 }
+

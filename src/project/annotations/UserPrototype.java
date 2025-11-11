@@ -1,10 +1,15 @@
 package project.annotations;
 
 public class UserPrototype {
-	@NetworkAPIPrototype
-	public void prototype(UserAPI userapi) {
-		userapi.setInput("file://inputs.txt");
-		userapi.setOutput("file://outputs.txt");
-		userapi.useDefaultDelimiters();
-	}
+    @NetworkAPIPrototype
+    public String prototype(UserAPI userApi) {
+    	
+        userApi.setInput("file://inputs.txt");
+        userApi.setOutput("file://outputs.txt");
+        userApi.useDefaultDelimiters();
+        
+        String result = userApi.run();
+        
+        return result;
+    }
 }

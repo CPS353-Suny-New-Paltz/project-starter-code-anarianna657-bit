@@ -1,33 +1,34 @@
 package integrationtests;
+
 import project.annotations.StorageAPI;
 
-//Reads and writes data from simple in memory fields.
 public class InMemoryStorageAPI implements StorageAPI {
 
-    private String inputData;
-    private String outputData;
+    private String storedInput;
+    private String storedOutput;
 
-    public InMemoryStorageAPI() {
-        this.inputData = "";
-        this.outputData = "";
+    @Override
+    public String readInput(String source) {
+        this.storedInput = source;
+        return storedInput;
     }
 
     @Override
-    public void readInput(String source) {
-        this.inputData = source;
+    public String writeOutput(String destination) {
+        this.storedOutput = destination;
+        return storedOutput;
     }
 
-    @Override
-    public void writeOutput(String destination) {
-        this.outputData = destination;
+    public String getStoredInput() {
+        return storedInput;
     }
 
-    //Test helper methods
-    public String getInputData() {
-        return inputData;
+    public String getStoredOutput() {
+        return storedOutput;
     }
-
+    
     public String getOutputData() {
-        return outputData;
+        return storedOutput;
     }
 }
+
