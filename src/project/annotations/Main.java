@@ -1,18 +1,20 @@
 package project.annotations;
 
 public class Main {
-	public static void main(String[] args) {
-		StorageAPI storage = new StorageAPI() {
-			@Override
-			public void readInput(String source) {
-				System.out.println("readInput: " + source);
-			}
+    public static void main(String[] args) {
+        StorageAPI storage = new StorageAPI() {
+            @Override
+            public String readInput(String source) {
+                System.out.println("readInput: " + source);
+                return source;
+            }
 
-			@Override
-			public void writeOutput(String destination) {
-				System.out.println("writeOutput: " + destination);
-			}
-		};
-		new StoragePrototype().prototype(storage);
-	}
+            @Override
+            public String writeOutput(String destination) {
+                System.out.println("writeOutput: " + destination);
+                return "Output written to " + destination;
+            }
+        };
+        new StoragePrototype().prototype(storage);
+    }
 }

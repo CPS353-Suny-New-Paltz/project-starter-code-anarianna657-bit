@@ -1,9 +1,10 @@
 package project.annotations;
 
 public class EnginePrototype {
-	@ConceptualAPIPrototype
-	public void prototype(EngineAPI computeapi) {
-		String result = computeapi.compute(42);
-		System.out.println("Prototype compute(42): " + result);
-	}
+
+    @ConceptualAPIPrototype
+    public String prototype(EngineAPI computeApi) {
+        String result = computeApi.compute(42);
+        return result;
+    }
 }

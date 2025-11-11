@@ -9,4 +9,6 @@ public interface UserAPI {
 	void setDelimiters(String pairDelimiter, String kvDelimiter);
 
 	void useDefaultDelimiters();
+	
+	String run();
 }

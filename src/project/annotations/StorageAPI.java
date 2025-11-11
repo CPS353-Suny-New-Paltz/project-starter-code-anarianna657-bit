@@ -2,7 +2,6 @@ package project.annotations;
 
 @ProcessAPI
 public interface StorageAPI {
-	void readInput(String source);
-
-	void writeOutput(String destination);
+    String readInput(String source);
+    String writeOutput(String destination);
 }
