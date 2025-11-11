@@ -26,5 +26,9 @@ public class InMemoryStorageAPI implements StorageAPI {
     public String getStoredOutput() {
         return storedOutput;
     }
+    
+    public String getOutputData() {
+        return storedOutput;
+    }
 }
 
