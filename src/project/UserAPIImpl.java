@@ -44,7 +44,7 @@ public class UserAPIImpl implements UserAPI {
         String parsed = storage.parseInput(raw);
         String formatted = storage.formatOutput(parsed);
         engine.compute(42);
-        return storage.writeOutput(formatted);
+        return storage.writeOutput(outputDestination);
     }
 
     public String runEngineTask(EngineAPI mockEngine, int i) {
