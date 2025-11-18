@@ -18,7 +18,6 @@ public class ManualTestingFramework {
     	    };
 
     	    StorageAPIImpl storage = new StorageAPIImpl() {
-    	        @Override
     	        public void saveData(String output, String result) {
     	            try {
     	                java.nio.file.Files.write(java.nio.file.Paths.get(output), result.getBytes());
@@ -44,7 +43,7 @@ public class ManualTestingFramework {
 
     	    System.out.println("Running manual test...");
     	    String result = user.findPrimes(3);
-    	    storage.saveData(OUTPUT, result);
+    	    storage.saveData(OUTPUT);
     	    user.displayComputationSummary();
     	}
 }

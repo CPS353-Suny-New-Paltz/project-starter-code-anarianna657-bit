@@ -40,9 +40,11 @@ public class UserAPIImpl implements UserAPI {
 
     @Override
     public String run() {
-        String input = storage.readInput(inputSource);
-        String result = engine.compute(42);
-        return storage.writeOutput(result);
+        String raw = storage.readInput(inputSource);
+        String parsed = storage.parseInput(raw);
+        String formatted = storage.formatOutput(parsed);
+        engine.compute(42);
+        return storage.writeOutput(formatted);
     }
 
     public String runEngineTask(EngineAPI mockEngine, int i) {

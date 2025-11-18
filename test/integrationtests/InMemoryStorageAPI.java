@@ -30,5 +30,17 @@ public class InMemoryStorageAPI implements StorageAPI {
     public String getOutputData() {
         return storedOutput;
     }
+
+	@Override
+	public String parseInput(String rawData) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String formatOutput(String data) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 
