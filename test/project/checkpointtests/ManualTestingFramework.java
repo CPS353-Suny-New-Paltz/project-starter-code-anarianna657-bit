@@ -1,4 +1,5 @@
 package project.checkpointtests;
+
 import project.EngineAPIImpl;
 import project.StorageAPIImpl;
 import project.UserAPIImpl;
@@ -10,40 +11,15 @@ public class ManualTestingFramework {
 
     public static void main(String[] args) {
 
-    	    EngineAPIImpl engine = new EngineAPIImpl() {
-    	        @Override
-    	        public String calculatePrimes(int input) {
-    	            return "2,3,5"; 
-    	        }
-    	    };
+        EngineAPIImpl engine = new EngineAPIImpl();
 
-    	    StorageAPIImpl storage = new StorageAPIImpl() {
-    	        public void saveData(String output, String result) {
-    	            try {
-    	                java.nio.file.Files.write(java.nio.file.Paths.get(output), result.getBytes());
-    	                System.out.println("Output written to " + output);
-    	            } catch (Exception e) {
-    	                e.printStackTrace();
-    	            }
-    	        }
-    	    };
+        StorageAPIImpl storage = new StorageAPIImpl();
 
-    	    UserAPIImpl user = new UserAPIImpl(engine, storage) {
-    	        @Override
-    	        public String findPrimes(int input) {
-    	            return engine.calculatePrimes(input);
-    	        }
+        UserAPIImpl user = new UserAPIImpl(engine, storage);
 
-    	        @Override
-    	        public String displayComputationSummary() {
-    	            return "Computation summary displayed.";
-    	        }
+        user.setInput(INPUT);
+        user.setOutput(OUTPUT);
 
-    	    };
-
-    	    System.out.println("Running manual test...");
-    	    String result = user.findPrimes(3);
-    	    storage.saveData(OUTPUT);
-    	    user.displayComputationSummary();
-    	}
+        user.run();
+    }
 }
