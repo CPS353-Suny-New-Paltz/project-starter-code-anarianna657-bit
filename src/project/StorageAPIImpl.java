@@ -35,6 +35,7 @@ public class StorageAPIImpl implements StorageAPI {
             Path path = Paths.get(destination);
             Files.write(path, formattedOutput.getBytes());
         } catch (Exception e) {
+            return "";
         }
         return formattedOutput;
     }
