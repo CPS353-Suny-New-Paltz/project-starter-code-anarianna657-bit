@@ -1,27 +1,48 @@
 package project;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import project.annotations.StorageAPI;
 
 public class StorageAPIImpl implements StorageAPI {
 
-    public StorageAPIImpl() {
-    }
+    private String rawInput;
+    private String parsedInput;
+    private String formattedOutput;
 
     @Override
     public String readInput(String source) {
-        return source;
+        this.rawInput = source;
+        return rawInput;
+    }
+
+    @Override
+    public String parseInput(String raw) {
+        this.parsedInput = raw.replace("\n", ",");
+        return parsedInput;
+    }
+
+    @Override
+    public String formatOutput(String data) {
+        this.formattedOutput = data.trim();
+        return formattedOutput;
     }
 
     @Override
     public String writeOutput(String destination) {
-        return "Output written to " + destination;
+        try {
+            Path path = Paths.get(destination);
+            Files.write(path, formattedOutput.getBytes());
+        } catch (Exception e) {
+            return "";
+        }
+        return formattedOutput;
     }
 
-    public boolean saveData(String data) {
-        return false;
-    }
-
-    public void saveData(String output, String result) {
-    }
+	public boolean saveData(String string) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
 

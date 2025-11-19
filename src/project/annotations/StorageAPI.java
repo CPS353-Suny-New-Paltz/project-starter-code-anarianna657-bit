@@ -2,6 +2,8 @@ package project.annotations;
 
 @ProcessAPI
 public interface StorageAPI {
-    String readInput(String source);
-    String writeOutput(String destination);
+    String readInput(String filePath);
+    String parseInput(String rawData);
+    String formatOutput(String data);
+	String writeOutput(String formatted);
 }
