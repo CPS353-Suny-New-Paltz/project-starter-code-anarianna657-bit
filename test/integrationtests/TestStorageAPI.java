@@ -1,6 +1,5 @@
 package integrationtests;
 import project.StorageAPIImpl;
-import project.annotations.StorageAPI;
 import org.junit.jupiter.api.Test;
 
 public class TestStorageAPI {

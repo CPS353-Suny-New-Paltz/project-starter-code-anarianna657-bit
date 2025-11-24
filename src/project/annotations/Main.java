@@ -14,6 +14,18 @@ public class Main {
                 System.out.println("writeOutput: " + destination);
                 return "Output written to " + destination;
             }
+
+			@Override
+			public String parseInput(String rawData) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public String formatOutput(String data) {
+				// TODO Auto-generated method stub
+				return null;
+			}
         };
         new StoragePrototype().prototype(storage);
     }
