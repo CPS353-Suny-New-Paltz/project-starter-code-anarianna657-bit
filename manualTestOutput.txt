@@ -1,1 +1,1 @@
-manualTestInput.txt
+1,2,3

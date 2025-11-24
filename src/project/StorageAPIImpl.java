@@ -13,7 +13,14 @@ public class StorageAPIImpl implements StorageAPI {
 
     @Override
     public String readInput(String source) {
-        this.rawInput = source;
+        try {
+            Path path = Paths.get(source);
+            System.out.println("LOOKING FOR INPUT FILE AT: " + path.toAbsolutePath());
+            this.rawInput = Files.readString(path);
+        } catch (Exception e) {
+            System.out.println("FAILED TO READ FILE. NO FILE FOUND.");
+            this.rawInput = "";
+        }
         return rawInput;
     }
 
@@ -40,9 +47,8 @@ public class StorageAPIImpl implements StorageAPI {
         return formattedOutput;
     }
 
-	public boolean saveData(String string) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public boolean saveData(String output) {
+        String result = writeOutput(output);
+        return !result.isEmpty();
+    }
 }
-

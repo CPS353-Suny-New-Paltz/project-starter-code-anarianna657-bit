@@ -12,9 +12,7 @@ public class ManualTestingFramework {
     public static void main(String[] args) {
 
         EngineAPIImpl engine = new EngineAPIImpl();
-
         StorageAPIImpl storage = new StorageAPIImpl();
-
         UserAPIImpl user = new UserAPIImpl(engine, storage);
 
         user.setInput(INPUT);

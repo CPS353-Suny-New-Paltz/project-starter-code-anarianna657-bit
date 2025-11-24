@@ -41,9 +41,16 @@ public class UserAPIImpl implements UserAPI {
     @Override
     public String run() {
         String raw = storage.readInput(inputSource);
+        System.out.println("RAW: " + raw);
+
         String parsed = storage.parseInput(raw);
+        System.out.println("PARSED: " + parsed);
+
         String formatted = storage.formatOutput(parsed);
-        engine.compute(42);
+        System.out.println("FORMATTED: " + formatted);
+
+        System.out.println("OUTPUT DEST: " + outputDestination);
+
         return storage.writeOutput(outputDestination);
     }
 
