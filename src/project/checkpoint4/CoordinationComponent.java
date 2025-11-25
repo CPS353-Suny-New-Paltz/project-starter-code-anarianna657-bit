@@ -1,4 +1,5 @@
 package project.checkpoint4;
+
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
@@ -16,15 +17,25 @@ public class CoordinationComponent {
     }
 
     public String startComputation(Path inputFile, Path outputFile) {
+
+        if (inputFile == null) {
+            throw new IllegalArgumentException("Input file path cannot be null.");
+        }
+
+        if (outputFile == null) {
+            throw new IllegalArgumentException("Output file path cannot be null.");
+        }
+        
+
         try {
-            //Step b: read integers from file
+            // Step b: read integers from file
             List<Integer> numbers = storage.readInputFile(inputFile);
 
-            //Step c: pass integers to the compute component
+            // Step c: pass integers to the compute component
             int limit = numbers.get(0);
             List<Integer> results = compute.compute(limit);
 
-            //Step d: write results to file
+            // Step d: write results to file
             storage.writeOutputFile(outputFile, results);
 
             return "SUCCESS: Computation complete.";

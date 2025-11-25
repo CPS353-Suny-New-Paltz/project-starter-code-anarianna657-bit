@@ -1,4 +1,5 @@
 package project.checkpoint4;
+
 import java.util.ArrayList;
 import java.util.List;
 import project.annotations.ConceptualAPI;
@@ -7,10 +8,15 @@ import project.annotations.ConceptualAPI;
 public class ComputationComponent {
 
     public List<Integer> compute(int limit) {
+
+        if (limit < 0) {
+            throw new IllegalArgumentException("Limit cannot be negative.");
+        }
+
         List<Integer> primes = new ArrayList<>();
 
         if (limit <= 2) {
-        	return primes;
+            return primes;  
         }
 
         for (int i = 2; i < limit; i++) {
@@ -22,17 +28,17 @@ public class ComputationComponent {
     }
 
     private boolean isPrime(int n) {
-    	
+
         if (n < 2) {
-        	return false;
+            return false;
         }
-        
+
         if (n == 2) {
-        	return true;
+            return true;
         }
-        
+
         if (n % 2 == 0) {
-        	return false;
+            return false;
         }
 
         for (int i = 3; i * i <= n; i += 2) {
