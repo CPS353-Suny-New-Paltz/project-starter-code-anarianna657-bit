@@ -9,8 +9,13 @@ public class ComputationComponent {
     public List<Integer> compute(int limit) {
         List<Integer> primes = new ArrayList<>();
 
+<<<<<<< Updated upstream
         if (limit <= 2) {
         	return primes;
+=======
+        if (limit <= 1) {
+            return new ArrayList<>();
+>>>>>>> Stashed changes
         }
 
         for (int i = 2; i < limit; i++) {
@@ -22,6 +27,7 @@ public class ComputationComponent {
     }
 
     private boolean isPrime(int n) {
+<<<<<<< Updated upstream
     	
         if (n < 2) {
         	return false;
@@ -38,8 +44,19 @@ public class ComputationComponent {
         for (int i = 3; i * i <= n; i += 2) {
             if (n % i == 0) {
                 return false;
+=======
+        try {
+            if (n < 2) return false;
+            if (n == 2) return true;
+            if (n % 2 == 0) return false;
+
+            for (int i = 3; i * i <= n; i += 2) {
+                if (n % i == 0) return false;
+>>>>>>> Stashed changes
             }
+            return true;
+        } catch (Exception e) {
+            return false;
         }
-        return true;
     }
 }

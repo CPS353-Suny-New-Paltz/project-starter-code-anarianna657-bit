@@ -12,7 +12,16 @@ import project.annotations.ProcessAPI;
 @ProcessAPI
 public class DataStorageComponent {
 
+<<<<<<< Updated upstream
     public List<Integer> readInputFile(Path inputFile) throws IOException {
+=======
+    public List<Integer> readInputFile(Path inputFile) {
+
+        if (inputFile == null) {
+            return new ArrayList<>();
+        }
+
+>>>>>>> Stashed changes
         List<Integer> numbers = new ArrayList<>();
         try (BufferedReader reader = Files.newBufferedReader(inputFile, StandardCharsets.UTF_8)) {
             String line;
@@ -22,16 +31,36 @@ public class DataStorageComponent {
                     numbers.add(Integer.parseInt(line));
                 }
             }
+        } catch (IOException | NumberFormatException e) {
+            return new ArrayList<>();
+        } catch (Exception e) {
+            return new ArrayList<>();
         }
+
         return numbers;
     }
 
+<<<<<<< Updated upstream
     public void writeOutputFile(Path outputFile, List<Integer> results) throws IOException {
+=======
+    public boolean writeOutputFile(Path outputFile, List<Integer> results) {
+
+        if (outputFile == null || results == null) {
+            return false;
+        }
+
+>>>>>>> Stashed changes
         try (BufferedWriter writer = Files.newBufferedWriter(outputFile, StandardCharsets.UTF_8)) {
             for (int n : results) {
                 writer.write(Integer.toString(n));
                 writer.newLine();
             }
+        } catch (IOException e) {
+            return false;
+        } catch (Exception e) {
+            return false;
         }
+
+        return true;
     }
 }
