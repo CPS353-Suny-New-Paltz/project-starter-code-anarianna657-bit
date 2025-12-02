@@ -7,25 +7,30 @@ import project.annotations.ConceptualAPI;
 @ConceptualAPI
 public class ComputationComponent {
 
-    public List<Integer> compute(int limit) {
+	public List<Integer> compute(int limit) {
 
-        if (limit < 0) {
-            throw new IllegalArgumentException("Limit cannot be negative.");
-        }
+	    if (limit < 0) {
+	        throw new IllegalArgumentException("Limit cannot be negative.");
+	    }
 
-        List<Integer> primes = new ArrayList<>();
+	    try {
+	        List<Integer> primes = new ArrayList<>();
 
-        if (limit <= 2) {
-            return primes;  
-        }
+	        if (limit <= 2) {
+	            return primes;
+	        }
 
-        for (int i = 2; i < limit; i++) {
-            if (isPrime(i)) {
-                primes.add(i);
-            }
-        }
-        return primes;
-    }
+	        for (int i = 2; i < limit; i++) {
+	            if (isPrime(i)) {
+	                primes.add(i);
+	            }
+	        }
+	        return primes;
+	        
+	    } catch (Exception e) {
+	        return new ArrayList<>();  
+	    }
+	}
 
     private boolean isPrime(int n) {
 
