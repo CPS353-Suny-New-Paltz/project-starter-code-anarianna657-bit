@@ -1,6 +1,7 @@
 package project.checkpointtests;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import project.checkpoint4.ComputationComponent;
