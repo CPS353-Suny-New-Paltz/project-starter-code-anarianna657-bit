@@ -12,4 +12,5 @@ This system will take a single positive integer as input, and it will find all t
 **Example Output:**
 2, 3, 5, 7, 11, 13, 17, 19, 23, 29
 
-<img width="369" height="377" alt="Screenshot 2025-11-24 at 11 21 14 AM" src="https://github.com/user-attachments/assets/21dcdf63-0945-4f44-95df-5987c7104bf8" />
+
+<img width="369" height="377" alt="Screenshot 2025-11-24 at 11 21 14 AM" src="https://github.com/user-attachments/assets/29f1e777-f312-441c-9088-ef14fe2e42a0" />
