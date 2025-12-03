@@ -13,10 +13,10 @@ import project.annotations.ProcessAPI;
 @ProcessAPI
 public class DataStorageComponent {
 
-    public List<Integer> readInputFile(Path inputFile) throws IOException {
+    public List<Integer> readInputFile(Path inputFile) {
 
         if (inputFile == null) {
-            throw new IllegalArgumentException("Input file path cannot be null.");
+            return new ArrayList<>();
         }
 
         List<Integer> numbers = new ArrayList<>();
@@ -29,17 +29,19 @@ public class DataStorageComponent {
                     numbers.add(Integer.parseInt(line));
                 }
             }
+        } catch (IOException | NumberFormatException e) {
+            return new ArrayList<>();
+        } catch (Exception e) {
+            return new ArrayList<>();
         }
+
         return numbers;
     }
 
-    public void writeOutputFile(Path outputFile, List<Integer> results) throws IOException {
+    public boolean writeOutputFile(Path outputFile, List<Integer> results) {
 
-        if (outputFile == null) {
-            throw new IllegalArgumentException("Output file path cannot be null.");
-        }
-        if (results == null) {
-            throw new IllegalArgumentException("Results list cannot be null.");
+        if (outputFile == null || results == null) {
+            return false;
         }
 
         try (BufferedWriter writer = Files.newBufferedWriter(outputFile, StandardCharsets.UTF_8)) {
@@ -47,6 +49,12 @@ public class DataStorageComponent {
                 writer.write(Integer.toString(n));
                 writer.newLine();
             }
+        } catch (IOException e) {
+            return false;
+        } catch (Exception e) {
+            return false;
         }
+
+        return true;
     }
 }
