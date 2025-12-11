@@ -1,46 +1,55 @@
 package integrationtests;
 
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+
 import project.annotations.StorageAPI;
 
 public class InMemoryStorageAPI implements StorageAPI {
 
-    private String storedInput;
-    private String storedOutput;
+    private List<Integer> storedInput = new ArrayList<>();
+    private String storedFormattedOutput;
+    private boolean writeWasCalled = false;
 
     @Override
-    public String readInput(String source) {
-        this.storedInput = source;
-        return storedInput;
+    public List<Integer> readInput(Path source) {
+        return new ArrayList<>(storedInput);
     }
 
     @Override
-    public String writeOutput(String destination) {
-        this.storedOutput = destination;
-        return storedOutput;
+    public int parseInput(List<Integer> rawData) {
+        if (rawData == null || rawData.isEmpty()) {
+            return -1;
+        }
+        return rawData.get(0);
     }
 
-    public String getStoredInput() {
-        return storedInput;
+    @Override
+    public String formatOutput(List<Integer> primes) {
+        if (primes == null) {
+            return "";
+        }
+        storedFormattedOutput = primes.toString();
+        return storedFormattedOutput;
     }
 
-    public String getStoredOutput() {
-        return storedOutput;
-    }
-    
-    public String getOutputData() {
-        return storedOutput;
+    @Override
+    public boolean writeOutput(Path destination, String formattedOutput) {
+        writeWasCalled = true;
+        storedFormattedOutput = formattedOutput;
+        return true; 
     }
 
-	@Override
-	public String parseInput(String rawData) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public void setMockInput(List<Integer> numbers) {
+        storedInput = new ArrayList<>(numbers);
+    }
 
-	@Override
-	public String formatOutput(String data) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String getStoredFormattedOutput() {
+        return storedFormattedOutput;
+    }
+
+    public boolean wasWriteCalled() {
+        return writeWasCalled;
+    }
 }
-
