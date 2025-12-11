@@ -1,5 +1,9 @@
 package project;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+
 import project.annotations.EngineAPI;
 import project.annotations.StorageAPI;
 import project.annotations.UserAPI;
@@ -40,18 +44,30 @@ public class UserAPIImpl implements UserAPI {
 
     @Override
     public String run() {
-        String raw = storage.readInput(inputSource);
-        System.out.println("RAW: " + raw);
+        try {
+            Path inputPath = Paths.get(inputSource);
+            Path outputPath = Paths.get(outputDestination);
+            List<Integer> rawNumbers = storage.readInput(inputPath);
+            System.out.println("RAW: " + rawNumbers);
+            int limit = storage.parseInput(rawNumbers);
+            System.out.println("PARSED (limit): " + limit);
 
-        String parsed = storage.parseInput(raw);
-        System.out.println("PARSED: " + parsed);
+            if (limit < 0) {
+                return "ERROR: Invalid input.";
+            }
 
-        String formatted = storage.formatOutput(parsed);
-        System.out.println("FORMATTED: " + formatted);
+            String primes = engine.calculatePrimes(limit);
+            System.out.println("COMPUTED PRIMES: " + primes);
+            String formatted = storage.formatOutput(List.of(Integer.valueOf(primes)));
+            System.out.println("FORMATTED: " + formatted);
+            boolean written = storage.writeOutput(outputPath, formatted);
+            System.out.println("OUTPUT DEST: " + outputDestination);
 
-        System.out.println("OUTPUT DEST: " + outputDestination);
+            return written ? "SUCCESS" : "ERROR: Could not write output.";
 
-        return storage.writeOutput(outputDestination);
+        } catch (Exception e) {
+            return "ERROR: Unexpected failure - " + e.getMessage();
+        }
     }
 
     public String runEngineTask(EngineAPI mockEngine, int i) {
@@ -66,4 +82,3 @@ public class UserAPIImpl implements UserAPI {
         return "Computation complete for " + inputSource + " → " + outputDestination;
     }
 }
-

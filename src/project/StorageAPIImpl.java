@@ -2,53 +2,53 @@ package project;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
 import project.annotations.StorageAPI;
 
 public class StorageAPIImpl implements StorageAPI {
 
-    private String rawInput;
-    private String parsedInput;
-    private String formattedOutput;
-
     @Override
-    public String readInput(String source) {
+    public List<Integer> readInput(Path filePath) {
+        List<Integer> values = new ArrayList<>();
         try {
-            Path path = Paths.get(source);
-            System.out.println("LOOKING FOR INPUT FILE AT: " + path.toAbsolutePath());
-            this.rawInput = Files.readString(path);
+            List<String> lines = Files.readAllLines(filePath);
+            for (String line : lines) {
+                line = line.trim();
+                if (!line.isEmpty()) {
+                    values.add(Integer.parseInt(line));
+                }
+            }
         } catch (Exception e) {
-            System.out.println("FAILED TO READ FILE. NO FILE FOUND.");
-            this.rawInput = "";
+            return new ArrayList<>();
         }
-        return rawInput;
+        return values;
     }
 
     @Override
-    public String parseInput(String raw) {
-        this.parsedInput = raw.replace("\n", ",");
-        return parsedInput;
+    public int parseInput(List<Integer> rawData) {
+        if (rawData.isEmpty()) {
+            return -1;  
+        }
+        return rawData.get(0);
     }
 
     @Override
-    public String formatOutput(String data) {
-        this.formattedOutput = data.trim();
-        return formattedOutput;
-    }
-
-    @Override
-    public String writeOutput(String destination) {
-        try {
-            Path path = Paths.get(destination);
-            Files.write(path, formattedOutput.getBytes());
-        } catch (Exception e) {
+    public String formatOutput(List<Integer> primes) {
+        if (primes == null || primes.isEmpty()) {
             return "";
         }
-        return formattedOutput;
+        return primes.toString();
     }
 
-    public boolean saveData(String output) {
-        String result = writeOutput(output);
-        return !result.isEmpty();
+    @Override
+    public boolean writeOutput(Path destination, String formattedOutput) {
+        try {
+            Files.writeString(destination, formattedOutput);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

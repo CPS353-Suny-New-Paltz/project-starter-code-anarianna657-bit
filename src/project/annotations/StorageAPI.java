@@ -1,9 +1,12 @@
 package project.annotations;
 
+import java.nio.file.Path;
+import java.util.List;
+
 @ProcessAPI
 public interface StorageAPI {
-    String readInput(String filePath);
-    String parseInput(String rawData);
-    String formatOutput(String data);
-	String writeOutput(String formatted);
+    List<Integer> readInput(Path filePath);
+    int parseInput(List<Integer> rawData);
+    String formatOutput(List<Integer> primes);
+    boolean writeOutput(Path destination, String formattedOutput);
 }

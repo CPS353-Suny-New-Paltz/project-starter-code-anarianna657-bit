@@ -1,40 +1,46 @@
 package integrationtests;
+
 import org.junit.jupiter.api.Test;
-//import project.EngineAPIImpl;
-//import project.StorageAPIImpl;
-//import project.UserAPIImpl;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import project.checkpoint4.ComputationComponent;
+
+import java.nio.file.Path;
+import java.util.List;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-//This version passes temporarily until compute logic is implemented.
 public class ComputeEngineIntegrationTest {
 
     @Test
-    public void testComputeEngineIntegration() {
-        //Step 1: Create an in-memory data store
-        InMemoryStorageAPI dataStore = new InMemoryStorageAPI();
+    public void testComputeEngineIntegration() throws Exception {
 
-        //Step 2: Provide simulated input
-        String inputData = "1,10,25";
-        dataStore.readInput(inputData);
+        // Step 1: Create an in-memory storage mock
+        InMemoryStorageAPI storage = new InMemoryStorageAPI();
 
-        //Step 3: Create API implementations (placeholders for now)
-        //StorageAPIImpl storageApi = new StorageAPIImpl();
-        //EngineAPIImpl engineApi = new EngineAPIImpl();
-        //UserAPIImpl userApi = new UserAPIImpl(engineApi, storageApi);
+        // Step 2: Provide input to mock storage
+        storage.setMockInput(List.of(10));   // input: compute primes < 10
 
-        // Step 4: Simulate computation process (placeholder behavior)
-        String simulatedResult = "Primes computed for input: " + inputData;
-        dataStore.writeOutput(simulatedResult);
+        // Step 3: Create the computation engine
+        ComputationComponent computeEngine = new ComputationComponent();
 
-        //Step 5: Verify that output was stored correctly
-        String result = dataStore.getOutputData();
-        assertNotNull(result, "Output data should not be null.");
-        assertTrue(result.contains("Primes computed for input"),
-                "Output should indicate computation took place.");
+        // Step 4: Simulate coordination process
+        int limit = storage.parseInput(storage.readInput(Path.of("fake.txt")));
+        assertEquals(10, limit, "Limit should be parsed correctly.");
 
-        //Pass temporarily until compute logic is implemented
-        System.out.println("Integration test placeholder passing: compute logic not implemented yet.");
-        assertTrue(true);
+        List<Integer> results = computeEngine.compute(limit);
+        assertEquals(List.of(2, 3, 5, 7), results,
+                "Prime computation should return primes less than 10.");
+
+        String formatted = storage.formatOutput(results);
+        assertEquals("[2, 3, 5, 7]", formatted,
+                "Formatted output should match expected prime list.");
+
+        boolean written = storage.writeOutput(Path.of("output.txt"), formatted);
+        assertTrue(written, "writeOutput should return true for mock storage.");
+
+        // Step 5: Ensure the storage actually received the output
+        assertEquals("[2, 3, 5, 7]", storage.getStoredFormattedOutput(),
+                "Output should be stored correctly in mock storage.");
+
+        System.out.println("Integration test passed: Engine + Storage pipeline works.");
     }
 }

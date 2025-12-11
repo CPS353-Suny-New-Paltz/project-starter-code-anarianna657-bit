@@ -2,41 +2,39 @@ package project.checkpoint4;
 
 import java.nio.file.Path;
 import java.util.List;
+
+import project.StorageAPIImpl;           
 import project.annotations.NetworkAPI;
+import project.annotations.StorageAPI;
 
 @NetworkAPI
 public class CoordinationComponent {
 
-    private final DataStorageComponent storage;
+    private final StorageAPI storage;
     private final ComputationComponent compute;
 
     public CoordinationComponent() {
-        this.storage = new DataStorageComponent();
+        this.storage = new StorageAPIImpl();
         this.compute = new ComputationComponent();
     }
 
     public String startComputation(Path inputFile, Path outputFile) {
 
-        if (inputFile == null) {
-            return "ERROR: Input file path is null.";
-        }
-
-        if (outputFile == null) {
-            return "ERROR: Output file path is null.";
-        }
-
         try {
-            List<Integer> numbers = storage.readInputFile(inputFile);
-            if (numbers.isEmpty()) {
-                return "ERROR: Could not read valid numbers from input file.";
+            List<Integer> rawNumbers = storage.readInput(inputFile);
+            int limit = storage.parseInput(rawNumbers);
+
+            if (limit < 0) {
+                return "ERROR: Invalid input format.";
             }
 
-            int limit = numbers.get(0);
             List<Integer> results = compute.compute(limit);
+            String formatted = storage.formatOutput(results);
 
-            boolean success = storage.writeOutputFile(outputFile, results);
-            if (!success) {
-                return "ERROR: Failed to write output to file.";
+            boolean written = storage.writeOutput(outputFile, formatted);
+
+            if (!written) {
+                return "ERROR: Failed to write output file.";
             }
 
             return "SUCCESS: Computation complete.";
