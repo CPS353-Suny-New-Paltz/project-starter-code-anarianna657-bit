@@ -20,17 +20,6 @@ public class TestUser {
         char delimiter = ';';
         String inputPath = "test" + File.separatorChar + "testInputFile.test";
         
-        try {
-            File f = new File(inputPath);
-            if (!f.exists()) {
-                f.getParentFile().mkdirs();
-                f.createNewFile();
-                Files.writeString(f.toPath(), "10");
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
         // TODO 4: Call the appropriate method(s) on the coordinator to get it to
         // run the compute job specified by inputPath, outputPath, and delimiter
         coordinator.startComputation(
