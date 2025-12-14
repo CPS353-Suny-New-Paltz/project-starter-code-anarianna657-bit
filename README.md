@@ -17,3 +17,8 @@ This system will take a single positive integer as input, and it will find all t
 I selected an upper bound of 4 threads for the multithreaded compute engine.
 This is enough parallelism to show concurrency while avoiding unnecessary
 thread overhead for small workloads.
+
+## Final Project (New addition): ReviewDog Checkstyle Integration
+This project extends the CI infrastructure by integrating ReviewDog with Checkstyle.
+Checkstyle violations are reported directly as GitHub pull request review comments,
+improving developer feedback and code review clarity.
