@@ -28,7 +28,7 @@ jobs:
         run: ./gradlew checkstyleMain checkstyleTest --no-daemon
 
       - name: Install reviewdog (pinned)
-        uses: reviewdog/action-setup@3f401fe
+        uses: reviewdog/action-setup@3f401fe1d58fe77e10d665ab713057375e39b887
         with:
           reviewdog_version: latest
 
