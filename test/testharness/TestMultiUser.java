@@ -14,58 +14,54 @@ import java.util.concurrent.Future;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import project.checkpoint4.CoordinationComponent;
+import project.checkpoint4.MultiThreadedCoordinationComponent;
 
 public class TestMultiUser {
 
     // TODO 1: change the type of this variable to the name you're using for your @NetworkAPI
     // interface
-    private CoordinationComponent coordinator;
-    private Object networkAPI;
+    private MultiThreadedCoordinationComponent coordinator;
 
     @BeforeEach
     public void initializeComputeEngine() {
-        networkAPI = new Object();
-
-        // TODO 2: create an instance of the implementation of your @NetworkAPI
+        // TODO 2: create an instance of the implementation of your @NetworkAPI; this is the component
+        // that the user will make requests to
         // Store it in the 'coordinator' instance variable
-        coordinator = new CoordinationComponent();
-    }
-
-    public void cleanup() {
-        if (networkAPI != null) {
-            // nothing needed
-        }
+        coordinator = new MultiThreadedCoordinationComponent();
     }
 
     @Test
     public void compareMultiAndSingleThreaded() throws Exception {
         int numThreads = 4;
         List<TestUser> testUsers = new ArrayList<>();
+
         for (int i = 0; i < numThreads; i++) {
             testUsers.add(new TestUser(coordinator));
         }
 
         // Run single threaded
-        String singleThreadFilePrefix = "testMultiUser.compareMultiAndSingleThreaded.test.singleThreadOut.tmp";
+        String singleThreadFilePrefix =
+                "testMultiUser.compareMultiAndSingleThreaded.singleThreadOut.tmp";
+
         for (int i = 0; i < numThreads; i++) {
-            File singleThreadedOut =
-                    new File(singleThreadFilePrefix + i);
-            singleThreadedOut.deleteOnExit();
-            testUsers.get(i).run(singleThreadedOut.getCanonicalPath());
+            File outFile = new File(singleThreadFilePrefix + i);
+            outFile.deleteOnExit();
+            testUsers.get(i).run(outFile.getCanonicalPath());
         }
 
         // Run multi threaded
         ExecutorService threadPool = Executors.newCachedThreadPool();
         List<Future<?>> results = new ArrayList<>();
-        String multiThreadFilePrefix = "testMultiUser.compareMultiAndSingleThreaded.test.multiThreadOut.tmp";
+
+        String multiThreadFilePrefix =
+                "testMultiUser.compareMultiAndSingleThreaded.multiThreadOut.tmp";
+
         for (int i = 0; i < numThreads; i++) {
-            File multiThreadedOut =
-                    new File(multiThreadFilePrefix + i);
-            multiThreadedOut.deleteOnExit();
-            String multiThreadOutputPath = multiThreadedOut.getCanonicalPath();
+            File outFile = new File(multiThreadFilePrefix + i);
+            outFile.deleteOnExit();
+            String outputPath = outFile.getCanonicalPath();
             TestUser testUser = testUsers.get(i);
-            results.add(threadPool.submit(() -> testUser.run(multiThreadOutputPath)));
+            results.add(threadPool.submit(() -> testUser.run(outputPath)));
         }
 
         for (Future<?> future : results) {
@@ -75,18 +71,15 @@ public class TestMultiUser {
         List<String> singleThreaded = loadAllOutput(singleThreadFilePrefix, numThreads);
         List<String> multiThreaded = loadAllOutput(multiThreadFilePrefix, numThreads);
 
-        // FIXED: removed Assert.assertEquals, replaced with JUnit 5 assertEquals
         assertEquals(singleThreaded, multiThreaded);
     }
 
     private List<String> loadAllOutput(String prefix, int numThreads) throws IOException {
         List<String> result = new ArrayList<>();
         for (int i = 0; i < numThreads; i++) {
-            File multiThreadedOut =
-                    new File(prefix + i);
-            result.addAll(Files.readAllLines(multiThreadedOut.toPath()));
+            File outFile = new File(prefix + i);
+            result.addAll(Files.readAllLines(outFile.toPath()));
         }
         return result;
     }
-
 }
