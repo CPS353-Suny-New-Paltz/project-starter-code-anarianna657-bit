@@ -14,3 +14,6 @@ This system will take a single positive integer as input, and it will find all t
 
 <img width="755" height="280" alt="Screenshot 2025-12-04 at 11 22 07 AM" src="https://github.com/user-attachments/assets/abcc8336-e4fd-47ca-b7ab-7fdf347a8b1d" />
 
+I selected an upper bound of 4 threads for the multithreaded compute engine.
+This is enough parallelism to show concurrency while avoiding unnecessary
+thread overhead for small workloads.
