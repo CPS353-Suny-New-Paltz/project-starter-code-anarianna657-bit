@@ -38,3 +38,8 @@ tasks.withType(Checkstyle).configureEach {
         html.required.set(true)
     }
 }
+
+checkstyle {
+    toolVersion = "10.12.6"
+    configFile = file("checkstyle_checks.xml")
+}
