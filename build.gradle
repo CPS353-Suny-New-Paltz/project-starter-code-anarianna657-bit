@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'checkstyle'
 
 eclipse.project.name = 'Cheeseburger' 
 
@@ -36,4 +37,9 @@ tasks.withType(Checkstyle).configureEach {
         xml.required.set(true)
         html.required.set(true)
     }
+}
+
+checkstyle {
+    toolVersion = "10.12.6"
+    configFile = file("checkstyle_checks.xml")
 }
