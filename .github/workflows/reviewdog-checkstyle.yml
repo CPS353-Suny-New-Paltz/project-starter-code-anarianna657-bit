@@ -1,4 +1,4 @@
-name: Checkstyle (Reviewdog PR comments)
+name: Checkstyle (ReviewDog PR comments)
 
 on:
   pull_request:
@@ -24,32 +24,17 @@ jobs:
       - name: Grant execute permission for Gradle wrapper
         run: chmod +x ./gradlew
 
-      - name: Run Checkstyle reports
-        run: ./gradlew checkstyleMain checkstyleTest --no-daemon
+      - name: Run Checkstyle
+        run: ./gradlew checkstyle --no-daemon
 
-      - name: Install reviewdog (pinned)
+      - name: Install ReviewDog (pinned)
         uses: reviewdog/action-setup@3f401fe1d58fe77e10d665ab713057375e39b887
         with:
           reviewdog_version: latest
 
-      - name: Reviewdog on checkstyleMain
+      - name: ReviewDog on Checkstyle
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if [ -f build/reports/checkstyle/main.xml ]; then
-            cat build/reports/checkstyle/main.xml | reviewdog -f=checkstyle -name="checkstyleMain" -reporter=github-pr-review -filter-mode=diff_context
-          else
-            echo "No build/reports/checkstyle/main.xml found"
-            exit 1
-          fi
-
-      - name: Reviewdog on checkstyleTest
-        env:
-          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          if [ -f build/reports/checkstyle/test.xml ]; then
-            cat build/reports/checkstyle/test.xml | reviewdog -f=checkstyle -name="checkstyleTest" -reporter=github-pr-review -filter-mode=diff_context
-          else
-            echo "No build/reports/checkstyle/test.xml found (this is OK if you have no test sources)"
-            exit 0
-          fi
+          find build/reports/checkstyle -name "*.xml" -print -exec cat {} \; | \
+          reviewdog -f=checkstyle -name="checkstyle" -reporter=github-pr-review -filter-mode=diff_context
