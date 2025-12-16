@@ -2,14 +2,14 @@ package integrationtests;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import project.EngineAPIImpl;
+import project.FastEngineAPIImpl;
 import project.UserAPIImpl;
 
 public class UserEngineIntegrationTest {
 
     @Test
     public void testUserAndEngineInteraction() {
-        EngineAPIImpl engineApi = new EngineAPIImpl();
+        FastEngineAPIImpl engineApi = new FastEngineAPIImpl();
         InMemoryStorageAPI storageApi = new InMemoryStorageAPI();
         UserAPIImpl userApi  = new UserAPIImpl(engineApi, storageApi);
 
@@ -20,7 +20,7 @@ public class UserEngineIntegrationTest {
 
     @Test
     public void testEngineComputeIntegration() {
-        EngineAPIImpl engineApi = new EngineAPIImpl();
+        FastEngineAPIImpl engineApi = new FastEngineAPIImpl();
         InMemoryStorageAPI storageApi = new InMemoryStorageAPI();
         UserAPIImpl userApi = new UserAPIImpl(engineApi, storageApi);
 
