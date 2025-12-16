@@ -4,7 +4,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import org.junit.jupiter.api.Test;
 import project.UserAPIImpl;
-import project.EngineAPIImpl;
+import project.FastEngineAPIImpl;
 import project.annotations.EngineAPI;
 import project.annotations.StorageAPI;
 
@@ -39,7 +39,7 @@ public class TestUserAPI {
     //additional test added
     @Test
     public void testCalculatePrimesWithZeroOrNegative() {
-        EngineAPIImpl engineApi = new EngineAPIImpl();
+        FastEngineAPIImpl engineApi = new FastEngineAPIImpl();
         String resultZero = engineApi.calculatePrimes(0);
         String resultNegative = engineApi.calculatePrimes(-5);
         assertTrue(resultZero.isEmpty() && resultNegative.isEmpty(),

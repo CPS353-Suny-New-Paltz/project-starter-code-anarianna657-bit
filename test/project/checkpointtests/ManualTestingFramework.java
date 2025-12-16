@@ -1,6 +1,6 @@
 package project.checkpointtests;
 
-import project.EngineAPIImpl;
+import project.FastEngineAPIImpl;
 import project.StorageAPIImpl;
 import project.UserAPIImpl;
 
@@ -11,7 +11,7 @@ public class ManualTestingFramework {
 
     public static void main(String[] args) {
 
-        EngineAPIImpl engine = new EngineAPIImpl();
+        FastEngineAPIImpl engine = new FastEngineAPIImpl();
         StorageAPIImpl storage = new StorageAPIImpl();
         UserAPIImpl user = new UserAPIImpl(engine, storage);
 
