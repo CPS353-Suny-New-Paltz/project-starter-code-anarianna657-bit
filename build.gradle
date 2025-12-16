@@ -53,3 +53,11 @@ configurations.all {
         force 'com.google.guava:guava:32.1.3-jre'
     }
 }
+
+tasks.named('processResources') {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+tasks.named('compileJava') {
+    dependsOn tasks.named('generateProto')
+}
