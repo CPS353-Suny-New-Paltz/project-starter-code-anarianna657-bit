@@ -20,10 +20,6 @@ public class UserAPIImpl implements UserAPI {
         this.storage = storage;
     }
 
-    public String findPrimes1(int limit) {
-        return engine.calculatePrimes(limit);
-    }
-
     @Override
     public void setInput(String sourceUri) {
         this.inputSource = sourceUri;
@@ -36,38 +32,42 @@ public class UserAPIImpl implements UserAPI {
 
     @Override
     public void setDelimiters(String pairDelimiter, String kvDelimiter) {
+        //not used 
     }
 
     @Override
     public void useDefaultDelimiters() {
+        //not used
     }
 
     @Override
     public String run() {
+        Path outputPath = Paths.get(outputDestination);
+        String outputData;
+
         try {
             Path inputPath = Paths.get(inputSource);
-            Path outputPath = Paths.get(outputDestination);
+
             List<Integer> rawNumbers = storage.readInput(inputPath);
-            System.out.println("RAW: " + rawNumbers);
             int limit = storage.parseInput(rawNumbers);
-            System.out.println("PARSED (limit): " + limit);
 
             if (limit < 0) {
-                return "ERROR: Invalid input.";
+                outputData = "ERROR: Invalid input.";
+            } else {
+                String primes = engine.calculatePrimes(limit);
+                outputData = primes;
             }
 
-            String primes = engine.calculatePrimes(limit);
-            System.out.println("COMPUTED PRIMES: " + primes);
-            String formatted = storage.formatOutput(List.of(Integer.valueOf(primes)));
-            System.out.println("FORMATTED: " + formatted);
-            boolean written = storage.writeOutput(outputPath, formatted);
-            System.out.println("OUTPUT DEST: " + outputDestination);
-
-            return written ? "SUCCESS" : "ERROR: Could not write output.";
-
         } catch (Exception e) {
-            return "ERROR: Unexpected failure - " + e.getMessage();
+            outputData = "ERROR: Unexpected failure.";
         }
+
+        storage.writeOutput(outputPath, outputData);
+        return "SUCCESS";
+    }
+
+    public String findPrimes1(int limit) {
+        return engine.calculatePrimes(limit);
     }
 
     public String runEngineTask(EngineAPI mockEngine, int i) {
