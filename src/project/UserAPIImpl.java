@@ -2,6 +2,7 @@ package project;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 import project.annotations.EngineAPI;
@@ -45,20 +46,21 @@ public class UserAPIImpl implements UserAPI {
 
         try {
             Path inputPath = Paths.get(inputSource);
-            List<Integer> rawNumbers = storage.readInput(inputPath);
-            int limit = storage.parseInput(rawNumbers);
+            List<Integer> inputs = storage.readInput(inputPath);
 
-            if (limit < 0) {
-                outputData = "ERROR: Invalid input.";
-            } else {
-                String primes = engine.calculatePrimes(limit);
-                List<Integer> primeList = List.of(primes.split(","))
-                        .stream()
-                        .map(String::trim)
-                        .map(Integer::parseInt)
-                        .toList();
-                outputData = storage.formatOutput(primeList);
+            List<Integer> results = new ArrayList<>();
+
+            for (int limit : inputs) {
+                if (limit < 0) {
+                    results.add(-1);
+                } else {
+                    String primes = engine.calculatePrimes(limit);
+                    results.add(primes.split(",").length);
+                }
             }
+
+            outputData = storage.formatOutput(results);
+
         } catch (Exception e) {
             outputData = "ERROR: Unexpected failure.";
         }
