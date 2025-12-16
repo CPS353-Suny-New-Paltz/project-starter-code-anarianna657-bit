@@ -18,6 +18,20 @@ I selected an upper bound of 4 threads for the multithreaded compute engine.
 This is enough parallelism to show concurrency while avoiding unnecessary
 thread overhead for small workloads.
 
+## Performance Improvement (Checkpoint 8)
+
+The Engine API originally recomputed prime numbers for each request, recreating
+the computation component and recalculating results even for repeated inputs.
+
+An optimization was introduced by caching previously computed prime results
+within the Engine API. This avoids repeated expensive computations for the same
+input values.
+
+Benchmark Results:
+- Slow Engine: XXXXXXX ns
+- Fast Engine: YYYYYYY ns
+- Improvement: ~Z× faster
+
 ## Final Project (New addition): ReviewDog Checkstyle Integration
 This project extends the CI infrastructure by integrating ReviewDog with Checkstyle.
 Checkstyle violations are reported directly as GitHub pull request review comments,
