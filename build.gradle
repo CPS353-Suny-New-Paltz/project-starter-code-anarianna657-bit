@@ -93,3 +93,7 @@ configurations.all {
 tasks.named('processResources') {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
+
+tasks.named('compileJava') {
+    dependsOn tasks.named('generateProto')
+}
