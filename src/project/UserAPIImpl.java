@@ -32,12 +32,10 @@ public class UserAPIImpl implements UserAPI {
 
     @Override
     public void setDelimiters(String pairDelimiter, String kvDelimiter) {
-        //not used 
     }
 
     @Override
     public void useDefaultDelimiters() {
-        //not used
     }
 
     @Override
@@ -47,7 +45,6 @@ public class UserAPIImpl implements UserAPI {
 
         try {
             Path inputPath = Paths.get(inputSource);
-
             List<Integer> rawNumbers = storage.readInput(inputPath);
             int limit = storage.parseInput(rawNumbers);
 
@@ -55,9 +52,13 @@ public class UserAPIImpl implements UserAPI {
                 outputData = "ERROR: Invalid input.";
             } else {
                 String primes = engine.calculatePrimes(limit);
-                outputData = primes;
+                List<Integer> primeList = List.of(primes.split(","))
+                        .stream()
+                        .map(String::trim)
+                        .map(Integer::parseInt)
+                        .toList();
+                outputData = storage.formatOutput(primeList);
             }
-
         } catch (Exception e) {
             outputData = "ERROR: Unexpected failure.";
         }
