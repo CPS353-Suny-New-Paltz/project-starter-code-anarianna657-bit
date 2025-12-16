@@ -1,6 +1,9 @@
 package project.grpc;
 
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +19,9 @@ public class CoordinatorServiceImpl
     }
 
     @Override
-    public void runJob(RunJobRequest request,
-                       StreamObserver<RunJobResponse> responseObserver) {
+    public void runJob(
+            RunJobRequest request,
+            StreamObserver<RunJobResponse> responseObserver) {
 
         List<String> outputs = new ArrayList<>();
 
@@ -26,13 +30,28 @@ public class CoordinatorServiceImpl
                 if (input < 0) {
                     outputs.add("ERROR");
                 } else {
-                    String result = engine.calculatePrimes(input);
-                    outputs.add(result);
+                    outputs.add(engine.calculatePrimes(input));
                 }
             } catch (Exception e) {
                 outputs.add("ERROR");
             }
         }
+
+        ManagedChannel channel = ManagedChannelBuilder
+                .forAddress("localhost", 50052)
+                .usePlaintext()
+                .build();
+
+        DatastoreServiceGrpc.DatastoreServiceBlockingStub datastore =
+                DatastoreServiceGrpc.newBlockingStub(channel);
+
+        datastore.writeOutput(
+                WriteOutputRequest.newBuilder()
+                        .addAllOutputs(outputs)
+                        .build()
+        );
+
+        channel.shutdown();
 
         RunJobResponse response = RunJobResponse.newBuilder()
                 .setStatus("SUCCESS")
