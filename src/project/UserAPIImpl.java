@@ -2,6 +2,7 @@ package project;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 import project.annotations.EngineAPI;
@@ -18,10 +19,6 @@ public class UserAPIImpl implements UserAPI {
     public UserAPIImpl(EngineAPI engine, StorageAPI storage) {
         this.engine = engine;
         this.storage = storage;
-    }
-
-    public String findPrimes1(int limit) {
-        return engine.calculatePrimes(limit);
     }
 
     @Override
@@ -44,30 +41,36 @@ public class UserAPIImpl implements UserAPI {
 
     @Override
     public String run() {
+        Path outputPath = Paths.get(outputDestination);
+        String outputData;
+
         try {
             Path inputPath = Paths.get(inputSource);
-            Path outputPath = Paths.get(outputDestination);
-            List<Integer> rawNumbers = storage.readInput(inputPath);
-            System.out.println("RAW: " + rawNumbers);
-            int limit = storage.parseInput(rawNumbers);
-            System.out.println("PARSED (limit): " + limit);
+            List<Integer> inputs = storage.readInput(inputPath);
 
-            if (limit < 0) {
-                return "ERROR: Invalid input.";
+            List<Integer> results = new ArrayList<>();
+
+            for (int limit : inputs) {
+                if (limit < 0) {
+                    results.add(-1);
+                } else {
+                    String primes = engine.calculatePrimes(limit);
+                    results.add(primes.split(",").length);
+                }
             }
 
-            String primes = engine.calculatePrimes(limit);
-            System.out.println("COMPUTED PRIMES: " + primes);
-            String formatted = storage.formatOutput(List.of(Integer.valueOf(primes)));
-            System.out.println("FORMATTED: " + formatted);
-            boolean written = storage.writeOutput(outputPath, formatted);
-            System.out.println("OUTPUT DEST: " + outputDestination);
-
-            return written ? "SUCCESS" : "ERROR: Could not write output.";
+            outputData = storage.formatOutput(results);
 
         } catch (Exception e) {
-            return "ERROR: Unexpected failure - " + e.getMessage();
+            outputData = "ERROR: Unexpected failure.";
         }
+
+        storage.writeOutput(outputPath, outputData);
+        return "SUCCESS";
+    }
+
+    public String findPrimes1(int limit) {
+        return engine.calculatePrimes(limit);
     }
 
     public String runEngineTask(EngineAPI mockEngine, int i) {
