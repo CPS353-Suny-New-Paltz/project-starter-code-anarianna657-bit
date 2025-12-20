@@ -15,6 +15,6 @@ public class TestEngineAPI {
     public void testCalculatePrimesHandlesNegativeInput() {
         EngineAPIImpl engineApi = new EngineAPIImpl();
         String result = engineApi.calculatePrimes(-5);
-        assert result != null : "calculatePrimes should not return null for negative input";
+        assert result.isEmpty() : "calculatePrimes should not return null for negative input";
     }
 }

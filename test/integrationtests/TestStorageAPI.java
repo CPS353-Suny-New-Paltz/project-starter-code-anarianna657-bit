@@ -32,4 +32,17 @@ public class TestStorageAPI {
         int parsed = storage.parseInput(List.of(42));
         assert parsed == 42 : "parseInput should return the first integer";
     }
-}
+
+	@Test
+	public void testReadInputRejectsNullPath() {
+	    StorageAPIImpl storage = new StorageAPIImpl();
+	    boolean threw = false;
+	    try {
+	        storage.readInput(null);
+	    } catch (IllegalArgumentException e) {
+	        threw = true;
+	    }
+	    assert threw;
+	}
+}	
+
