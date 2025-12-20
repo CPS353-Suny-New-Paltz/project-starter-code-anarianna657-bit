@@ -4,16 +4,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-<<<<<<< Updated upstream
-import project.EngineAPIImpl;
-=======
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.nio.file.Path;
 import java.util.List;
 
 import project.FastEngineAPIImpl;
->>>>>>> Stashed changes
 import project.UserAPIImpl;
 import project.annotations.EngineAPI;
 import project.annotations.StorageAPI;
@@ -22,7 +18,7 @@ public class UserEngineIntegrationTest {
 
     @Test
     public void testUserAndEngineInteraction() {
-        EngineAPIImpl engineApi = new EngineAPIImpl();
+        FastEngineAPIImpl engineApi = new FastEngineAPIImpl();
         InMemoryStorageAPI storageApi = new InMemoryStorageAPI();
         UserAPIImpl userApi  = new UserAPIImpl(engineApi, storageApi);
 
@@ -33,7 +29,7 @@ public class UserEngineIntegrationTest {
 
     @Test
     public void testEngineComputeIntegration() {
-        EngineAPIImpl engineApi = new EngineAPIImpl();
+        FastEngineAPIImpl engineApi = new FastEngineAPIImpl();
         InMemoryStorageAPI storageApi = new InMemoryStorageAPI();
         UserAPIImpl userApi = new UserAPIImpl(engineApi, storageApi);
 

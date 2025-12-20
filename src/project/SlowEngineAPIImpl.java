@@ -1,9 +1,11 @@
+//Baseline (slow) Engine implementation for Checkpoint 8 benchmarking
+
 package project;
 import java.util.List;
 import project.annotations.EngineAPI;
 import project.checkpoint4.ComputationComponent;
 
-public class EngineAPIImpl implements EngineAPI {
+public class SlowEngineAPIImpl implements EngineAPI {
 
     @Override
     public String compute(int n) {
