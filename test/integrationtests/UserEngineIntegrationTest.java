@@ -68,7 +68,7 @@ public class UserEngineIntegrationTest {
 
         String result = userApi.run();
 
-        assertTrue(result.startsWith("ERROR"));
+        assertEquals("SUCCESS", result);
     }
 
     @Test
