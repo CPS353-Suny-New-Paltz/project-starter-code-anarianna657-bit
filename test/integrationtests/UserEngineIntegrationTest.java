@@ -4,16 +4,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-<<<<<<< Updated upstream
-import project.EngineAPIImpl;
-=======
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.nio.file.Path;
 import java.util.List;
 
 import project.FastEngineAPIImpl;
->>>>>>> Stashed changes
 import project.UserAPIImpl;
 import project.annotations.EngineAPI;
 import project.annotations.StorageAPI;
@@ -22,7 +18,7 @@ public class UserEngineIntegrationTest {
 
     @Test
     public void testUserAndEngineInteraction() {
-        EngineAPIImpl engineApi = new EngineAPIImpl();
+        FastEngineAPIImpl engineApi = new FastEngineAPIImpl();
         InMemoryStorageAPI storageApi = new InMemoryStorageAPI();
         UserAPIImpl userApi  = new UserAPIImpl(engineApi, storageApi);
 
@@ -33,7 +29,7 @@ public class UserEngineIntegrationTest {
 
     @Test
     public void testEngineComputeIntegration() {
-        EngineAPIImpl engineApi = new EngineAPIImpl();
+        FastEngineAPIImpl engineApi = new FastEngineAPIImpl();
         InMemoryStorageAPI storageApi = new InMemoryStorageAPI();
         UserAPIImpl userApi = new UserAPIImpl(engineApi, storageApi);
 
@@ -50,9 +46,18 @@ public class UserEngineIntegrationTest {
             public List<Integer> readInput(Path filePath) {
                 throw new RuntimeException("Simulated read failure");
             }
-            @Override public int parseInput(List<Integer> rawData) { return 0; }
-            @Override public String formatOutput(List<Integer> primes) { return ""; }
-            @Override public boolean writeOutput(Path destination, String formattedOutput) {
+            @Override 
+            public int parseInput(List<Integer> rawData) { 
+            	return 0; 
+            }
+            
+            @Override 
+            public String formatOutput(List<Integer> primes) { 
+            	return ""; 
+            	
+            }
+            @Override 
+            public boolean writeOutput(Path destination, String formattedOutput) {
                 return true;
             }
         };
@@ -75,7 +80,11 @@ public class UserEngineIntegrationTest {
             public List<Integer> readInput(Path filePath) {
                 return List.of(10);
             }
-            @Override public int parseInput(List<Integer> rawData) { return 10; }
+            
+            @Override 
+            public int parseInput(List<Integer> rawData) { 
+            	return 10; 
+            }
             @Override public String formatOutput(List<Integer> primes) {
                 return "[4]";
             }
