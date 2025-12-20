@@ -1,13 +1,16 @@
 package integrationtests;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+
 import org.junit.jupiter.api.Test;
+
 import project.UserAPIImpl;
 import project.FastEngineAPIImpl;
 import project.annotations.EngineAPI;
 import project.annotations.StorageAPI;
-
 
 public class TestUserAPI {
 
@@ -44,5 +47,31 @@ public class TestUserAPI {
         String resultNegative = engineApi.calculatePrimes(-5);
         assertTrue(resultZero.isEmpty() && resultNegative.isEmpty(),
                 "calculatePrimes should return an empty result for zero or negative inputs");
+    }
+
+    @Test
+    public void testRunFailsWhenInputNotSet() {
+        FastEngineAPIImpl engine = new FastEngineAPIImpl();
+        InMemoryStorageAPI storage = new InMemoryStorageAPI();
+        UserAPIImpl userApi = new UserAPIImpl(engine, storage);
+
+        userApi.setOutput("out.txt");
+
+        String result = userApi.run();
+
+        assertEquals("ERROR: Input source not set", result);
+    }
+
+    @Test
+    public void testRunFailsWhenOutputNotSet() {
+        FastEngineAPIImpl engine = new FastEngineAPIImpl();
+        InMemoryStorageAPI storage = new InMemoryStorageAPI();
+        UserAPIImpl userApi = new UserAPIImpl(engine, storage);
+
+        userApi.setInput("input.txt");
+
+        String result = userApi.run();
+
+        assertEquals("ERROR: Output destination not set", result);
     }
 }
